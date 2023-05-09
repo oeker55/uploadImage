@@ -22,7 +22,8 @@ router.post("/", upload.single("upload"), async (req, res) => {
       extName === "image/jfif" ||
       extName === "image/jpg" ||
       extName === "image/tif" ||
-      extName === "image/bmp"
+      extName === "image/bmp" ||
+      extName === "image/svg"
     ) {
       const targetPathUrl = path.join(photo.destination, photo.originalname);
 
