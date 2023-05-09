@@ -16,15 +16,15 @@ router.post("/", upload.single("upload"), async (req, res) => {
 
   const extName = photo.mimetype;
   try {
-    if (
-      extName === "image/png" ||
-      extName === "image/jpeg" ||
-      extName === "image/jfif" ||
-      extName === "image/jpg" ||
-      extName === "image/tif" ||
-      extName === "image/bmp" ||
-      extName === "image/svg"
-    ) {
+    // if (
+    //   extName === "image/png" ||
+    //   extName === "image/jpeg" ||
+    //   extName === "image/jfif" ||
+    //   extName === "image/jpg" ||
+    //   extName === "image/tif" ||
+    //   extName === "image/bmp" ||
+    //   extName === "image/svg"
+    // ) {
       const targetPathUrl = path.join(photo.destination, photo.originalname);
 
       fs.renameSync(PathPhoto, targetPathUrl);
@@ -33,11 +33,11 @@ router.post("/", upload.single("upload"), async (req, res) => {
 
         url: `${API_URL}/${photo.originalname}`,
       });
-    } else {
-      fs.unlinkSync(photo.path);
+    // } else {
+    //   fs.unlinkSync(photo.path);
 
-      res.json({ message: "Geçersiz Dosya Uzantısı!" });
-    }
+    //   res.json({ message: "Geçersiz Dosya Uzantısı!" });
+    // }
   } catch (error) {
     res.json(error);
   }
